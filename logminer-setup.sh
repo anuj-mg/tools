@@ -37,6 +37,7 @@ sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
 EOF
 
 sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
+  alter session set container = cdb$root
   CREATE USER c##dbzuser IDENTIFIED BY dbz DEFAULT TABLESPACE LOGMINER_TBS QUOTA UNLIMITED ON LOGMINER_TBS CONTAINER=ALL;
 
   GRANT CREATE SESSION TO c##dbzuser CONTAINER=ALL;
@@ -66,6 +67,7 @@ sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
 EOF
 
 sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
+  alter session set container = cdb$root
   CREATE USER debezium IDENTIFIED BY dbz;
   GRANT CONNECT TO debezium;
   GRANT CREATE SESSION TO debezium;
