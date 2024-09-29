@@ -36,9 +36,8 @@ sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
   exit;
 EOF
 
-sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
+sqlplus sys/password@//localhost:1521/ORACLEDB as sysdba <<- EOF
   CREATE USER c##dbzuser IDENTIFIED BY dbz DEFAULT TABLESPACE LOGMINER_TBS QUOTA UNLIMITED ON LOGMINER_TBS CONTAINER=ALL;
-
   GRANT CREATE SESSION TO c##dbzuser CONTAINER=ALL;
   GRANT SET CONTAINER TO c##dbzuser CONTAINER=ALL;
   GRANT SELECT ON V_\$DATABASE TO c##dbzuser CONTAINER=ALL;
