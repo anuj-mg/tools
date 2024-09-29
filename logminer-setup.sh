@@ -25,24 +25,13 @@ EOF
 
 # Create Log Miner Tablespace and User
 sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
+  alter session set container=FREE;
   CREATE TABLESPACE LOGMINER_TBS DATAFILE '/opt/oracle/oradata/FREE/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
   exit;
 EOF
 
 sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
-  CREATE TABLESPACE LOGMINER_TBS DATAFILE '/opt/oracle/oradata/FREE/FREEPDB1/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
-  exit;
-EOF
-
-# Create Log Miner Tablespace and User
-sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
-  alter session set container=ORACLEDB;
-  CREATE TABLESPACE LOGMINER_TBS DATAFILE '/opt/oracle/oradata/FREE/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
-  exit;
-EOF
-
-sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
-  alter session set container=ORACLEDB;
+  alter session set container=FREEPDB1;
   CREATE TABLESPACE LOGMINER_TBS DATAFILE '/opt/oracle/oradata/FREE/FREEPDB1/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
   exit;
 EOF
