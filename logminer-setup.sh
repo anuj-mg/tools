@@ -31,13 +31,13 @@ sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
 EOF
 
 sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
-  alter session set container=ORACLEDB;
+  alter session set container=FREEPDB1;
   CREATE TABLESPACE LOGMINER_TBS DATAFILE '/opt/oracle/oradata/FREE/FREEPDB1/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
   exit;
 EOF
 
 sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
-  alter session set container = CDB$ROOT;
+  alter session set container = ORACLEDB$ROOT;
   CREATE USER c##dbzuser IDENTIFIED BY dbz DEFAULT TABLESPACE LOGMINER_TBS QUOTA UNLIMITED ON LOGMINER_TBS CONTAINER=ALL;
 
   GRANT CREATE SESSION TO c##dbzuser CONTAINER=ALL;
@@ -67,7 +67,7 @@ sqlplus sys/password@//localhost:1521/FREE as sysdba <<- EOF
 EOF
 
 sqlplus sys/password@//localhost:1521/FREEPDB1 as sysdba <<- EOF
-  alter session set container = CDB$ROOT;
+  alter session set container = FREEPDB1$ROOT;
   CREATE USER debezium IDENTIFIED BY dbz;
   GRANT CONNECT TO debezium;
   GRANT CREATE SESSION TO debezium;
