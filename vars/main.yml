@@ -13,7 +13,7 @@ dns:
   forwarder2: "1.1.1.1"                    #second DNS forwarder
   lb_ipaddr: "{{ helper.ipaddr }}"         #Load balancer IP, it is optional, the default value is helper.ipaddr
 dhcp:
-  router: "10.10.18.2"                  #default gateway of the network assigned to the masters/workers
+  router: "10.10.18.1"                  #default gateway of the network assigned to the masters/workers
   bcast: "10.10.18.255"                 #broadcast address for your network
   netmask: "255.255.255.0"                 #netmask that gets assigned to your masters/workers
   poolstart: "10.10.18.10"              #First address in your dhcp address pool
